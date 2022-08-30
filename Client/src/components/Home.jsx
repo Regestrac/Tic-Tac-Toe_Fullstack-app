@@ -1,8 +1,10 @@
 import React from 'react';
 import './Home.css'
 import Logo from '../assets/Logo.png'
+import { useNavigate} from 'react-router-dom'
 
 const Home = () => {
+    const navigate = useNavigate()
   return (
     <div className='home'>
         <div className='head'>
@@ -10,8 +12,8 @@ const Home = () => {
             <img className='logo' src={Logo} alt="Logo" />
         </div>
         <div className='btns'>
-            <button className='btn'>Play Offline</button>
-            <button className='btn'>Play Online</button>
+            <button className='btn' onClick={() => navigate('/offline-game')}>Play Offline</button>
+            <button className='btn' onClick={() => navigate('/online-match')}>Play Online</button>
         </div>
         <div className='auth'>
             <button className='auth-btn'>Login</button>
