@@ -21,6 +21,7 @@
     font-family: 'Fredoka', sans-serif;
     font-size: 3.5rem;
     font-weight: 700;
+    cursor: pointer;
 }
 .X{
     color: #ff4323;
