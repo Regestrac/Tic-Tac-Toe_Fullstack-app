@@ -1,0 +1,49 @@
+.board{
+    display: flex;
+    justify-content: center;
+}
+.rows{
+    display: grid;
+    grid-template-columns: repeat(3, .1fr);
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 2px 2px 20px #000;
+}
+.box{
+    height: 5rem;
+    width: 5rem;
+    background-color: aliceblue;
+    border: 3px solid black;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box:nth-child(1){
+    border-left: none;
+    border-top: none;
+}
+.box:nth-child(2){
+    border-top: none;
+}
+.box:nth-child(3){
+    border-right: none;
+    border-top: none;
+}
+.box:nth-child(4){
+    border-left: none;
+}
+.box:nth-child(6){
+    border-right: none;
+}
+.box:nth-child(7){
+    border-left: none;
+    border-bottom: none;
+}
+.box:nth-child(8){
+    border-bottom: none;
+}
+.box:nth-child(9){
+    border-right: none;
+    border-bottom: none;
+}

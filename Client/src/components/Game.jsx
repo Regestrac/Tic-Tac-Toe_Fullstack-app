@@ -1,8 +1,13 @@
 import React from 'react'
+import Board from './Board'
+import './Game.css'
 
 const Game = () => {
   return (
-    <div>Game</div>
+    <div className='game'>
+        <h2>Tic Tac Toe</h2>
+        <Board />
+    </div>
   )
 }
 
