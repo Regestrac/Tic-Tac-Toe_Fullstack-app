@@ -1,19 +1,17 @@
 import React from 'react'
 import './Board.css'
 
-const Board = () => {
+const Board = ({ boxes, onClick }) => {
+
   return (
     <div className='board'>
       <div className='rows'>
-        <div className='box'>X</div>
-        <div className='box'>X</div>
-        <div className='box'>O</div>
-        <div className='box'>X</div>
-        <div className='box'>O</div>
-        <div className='box'>X</div>
-        <div className='box'>O</div>
-        <div className='box'>X</div>
-        <div className='box'>O</div>
+        {boxes.map((value, idx) => {
+          const style = value === "X" ? "box X" : "box O";
+          return (
+            <div className={style} value={value} onClick={() => onClick} key={idx}>{value}</div>
+          )
+        })}
       </div>
     </div>
   )
