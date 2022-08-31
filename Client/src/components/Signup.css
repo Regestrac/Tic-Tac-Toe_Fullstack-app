@@ -10,7 +10,13 @@ body {
     background-color: white;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 2px 2px 1.5rem #00000077;
+}
+
+h2{
+    text-align: center;
+    margin: 0 auto 1.5rem;
+
 }
 
 .input-container input {
@@ -23,7 +29,7 @@ body {
 }
 
 .input-container input:focus {
-    border-bottom: 3px solid #11dd11;
+    border-bottom: 3px solid #11ee11;
     background-color: #c8c8c8;
     transition-property: border;
     transition: 200ms ease;
@@ -38,6 +44,7 @@ input[type="submit"] {
     border: none;
     color: #fff;
     padding: 10px 20px;
+    box-shadow: 1px 1px 10px #00000077;
 }
 
 input[type="submit"]:hover {
