@@ -1,6 +1,7 @@
 .board{
     display: flex;
     justify-content: center;
+    margin-top: 4rem;
 }
 .rows{
     display: grid;

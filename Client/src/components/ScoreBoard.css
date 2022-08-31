@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: .5rem 1.5rem;
 }
 .o-score{
     color: #2784ff;

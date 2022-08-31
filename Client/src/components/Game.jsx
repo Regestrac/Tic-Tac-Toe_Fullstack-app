@@ -6,12 +6,13 @@ import ResetBtn from './ResetBtn'
 
 const Game = () => {
   const winConditions = [
-    [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]
+    [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]        //These are the possible win conditions
   ]
 
   const [boxes, setBoxes] = useState(Array(9).fill(null));   //setting box values as null at begining
   const [playerX, setPlayerX] = useState(true)               //setting playerX status as true at begining
   const [scores, setScores] = useState({scoreX:0, scoreO:0})
+  const [gameOver, setGameOver] = useState(false)
 
   const handleBoxClick = (boxIndex) =>{                      //This gets the index of clicked box from Board.jsx
     const updatedBox = boxes.map((value, index)=>{     //Iterating through each box to check the value and index
@@ -21,38 +22,44 @@ const Game = () => {
         return value;                                  //Returns the previous value of all other boxes
       }
     })
-    const winner = checkWinner(updatedBox)
+    const winner = checkWinner(updatedBox)      //checks for winner in the updated box values
     if(winner){
       if(winner === "O"){
         let {scoreO} = scores;
-        scoreO += 1;
+        scoreO += 1;                          //updates score if O won
         setScores({...scores,scoreO});
       }else{
         let {scoreX} = scores;
-        scoreX += 1;
+        scoreX += 1;                         //updates score if X won
         setScores({...scores,scoreX});
       }
     }
-
     setBoxes(updatedBox);        //updating box value on each click
     setPlayerX(!playerX);        //updating playerX status on each click
   }
 
-  const checkWinner = (boxes) =>{
-    for(let i=0; i < winConditions.length; i++){
+  const checkWinner = (boxes) =>{                   //checks for winner
+    for(let i=0; i < winConditions.length; i++){    //loops through the winconditions
       const [x,y,z] = winConditions[i];
-      if(boxes[x] && boxes[x] === boxes[y] && boxes[y] === boxes[z]){
+      if(boxes[x] && boxes[x] === boxes[y] && boxes[y] === boxes[z]){     //checks if the condition satisfies with same value
+        setGameOver(true)
         return boxes[x];
       }
     }
   }
 
+  const resetBoard = ()=>{            //Reset the board for new game
+    setGameOver(false)
+    setBoxes(Array(9).fill(null))
+    setPlayerX(true)
+  }
+
   return (
     <div className='game'>
         <h2>TIC TAC TOE</h2>
-        <Board boxes={boxes} onClick={handleBoxClick} />         {/* Passing the data to Board.jsx */}
-        <ResetBtn setBoxes={setBoxes} setPlayerX={setPlayerX}/>
         <ScoreBoard scores={scores} playerX={playerX} />
+        <Board boxes={boxes} onClick={gameOver ? resetBoard : handleBoxClick} />   {/* Passing the data to Board.jsx */}
+        <ResetBtn setBoxes={setBoxes} setPlayerX={setPlayerX}/>
     </div>
   )
 }

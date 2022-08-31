@@ -3,7 +3,7 @@ import './ResetBtn.css'
 
 const ResetBtn = ({setBoxes, setPlayerX}) => {
     const handleReset =()=>{
-        setBoxes(Array(9).fill(null));
+        setBoxes(Array(9).fill(null));         //This sets the board with null values
         setPlayerX(true)
     }
   return (

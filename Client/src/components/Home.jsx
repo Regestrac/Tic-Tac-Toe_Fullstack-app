@@ -16,8 +16,8 @@ const Home = () => {
             <button className='btn' onClick={() => navigate('/online-match')}>Play Online</button>    {/* navigates to the online match page */}
         </div>
         <div className='auth'>
-            <button className='auth-btn'>Login</button>     {/* navigates to the Login page */}
-            <button className='auth-btn'>Signup</button>    {/* navigates to the SignUp page */}
+            <button className='auth-btn' onClick={() => navigate('/login')}>Login</button>     {/* navigates to the Login page */}
+            <button className='auth-btn' onClick={() => navigate('/signup')}>Signup</button>    {/* navigates to the SignUp page */}
         </div>
     </div>
   )
