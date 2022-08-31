@@ -1,12 +1,23 @@
 import React from 'react'
+import './Login.css'
 
 const Login = () => {
   return (
-    <div style={{height:"100vh", display:"flex", alignItems:"center", flexDirection:"column"}}>
-       <h2>Tic Tac Toe</h2>
-        <h1>Coming Soon...!</h1>
-        <p style={{textAlign:"center"}}>We are working on this online multiplayer section. It will be available soon. Meanwhile you can enjoy the offline game section.❤️</p>
-    </div>
+    <div className="login-form">
+     <form>
+       <div className="input-container">
+         <label>Username </label>
+         <input type="text" name="uname" required />
+       </div>
+       <div className="input-container">
+         <label>Password </label>
+         <input type="password" name="pass" required />
+       </div>
+       <div className="button-container">
+         <input type="submit" />
+       </div>
+     </form>
+   </div>
   )
 }
 

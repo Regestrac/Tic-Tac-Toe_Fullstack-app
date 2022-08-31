@@ -5,16 +5,15 @@
     align-items: center;
 }
 .head{
-    margin: 2rem auto 4rem;
+    margin: 4rem auto 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .logo{
-    margin-top: 1rem;
+    margin-top: 3rem;
     height:6rem;
     width: 6rem;
-    background-color: #0000dd;
     border-radius: .5rem;
 }
 .btns{
