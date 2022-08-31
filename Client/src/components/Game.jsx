@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Game.css'
 import Board from './Board'
 import ScoreBoard from './ScoreBoard'
+import ResetBtn from './ResetBtn'
 
 const Game = () => {
   const winConditions = [
@@ -50,7 +51,7 @@ const Game = () => {
     <div className='game'>
         <h2>TIC TAC TOE</h2>
         <Board boxes={boxes} onClick={handleBoxClick} />         {/* Passing the data to Board.jsx */}
-        
+        <ResetBtn setBoxes={setBoxes} setPlayerX={setPlayerX}/>
         <ScoreBoard scores={scores} playerX={playerX} />
     </div>
   )

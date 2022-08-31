@@ -1,5 +1,5 @@
 .score-board{
-    margin-top: 5rem;
+    margin-top: 3rem;
     display: flex;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
@@ -8,6 +8,8 @@
 }
 .scores{
     display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: aliceblue;
     border-radius: 1rem;
     box-shadow: 1px 1px 10px #000;
@@ -21,13 +23,20 @@
 .o-score{
     color: #2784ff;
     border-bottom:5px solid #2784ff;
+    border-top:5px solid #2784ff;
     border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+    box-sizing: border-box;
 }
 .x-score{
     color: #ff4323;
     border-bottom :5px solid #ff4323;
+    border-top :5px solid #ff4323;
     border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    box-sizing: border-box;
 }
 .inactive{
     border-bottom: transparent;
+    border-top: transparent;
 }
