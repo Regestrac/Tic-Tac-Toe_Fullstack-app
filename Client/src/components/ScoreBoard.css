@@ -1,0 +1,33 @@
+.score-board{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.scores{
+    display: flex;
+    background-color: aliceblue;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 10px #000;
+}
+.x-score, .o-score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.o-score{
+    color: #2784ff;
+    border-bottom:5px solid #2784ff;
+    border-bottom-right-radius: 1rem;
+}
+.x-score{
+    color: #ff4323;
+    border-bottom :5px solid #ff4323;
+    border-bottom-left-radius: 1rem;
+}
+.inactive{
+    border-bottom: transparent;
+}
