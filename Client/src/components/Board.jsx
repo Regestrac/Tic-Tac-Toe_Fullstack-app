@@ -1,8 +1,14 @@
 import React from 'react'
+// import { useState } from 'react'
 import './Board.css'
 
-const Board = ({ boxes, onClick }) => {  //props coming from Game.jsx
-
+const Board = ({ boxes, onClick, winPlayer, setWinPlayer, setGameOver, resetBoard}) => {  //props coming from Game.jsx
+  // const [newClass, setNewClass] = useState('win-alert');
+  const handleOk =()=>{
+      resetBoard()
+      setWinPlayer(null)
+      setGameOver(true)
+  }
   return (
       <div className='board'>
         <div className='rows'>
@@ -13,6 +19,11 @@ const Board = ({ boxes, onClick }) => {  //props coming from Game.jsx
             )
           })}
         </div>
+        {winPlayer && 
+        <div className='win-alert' >
+          <h3>Player {winPlayer} won!</h3>
+          <button className='ok-button' onClick={handleOk}>OK</button>
+        </div>}
       </div>
   )
 }

@@ -13,6 +13,7 @@ const Game = () => {
   const [playerX, setPlayerX] = useState(true)               //setting playerX status as true at begining
   const [scores, setScores] = useState({scoreX:0, scoreO:0})
   const [gameOver, setGameOver] = useState(false)
+  const [winPlayer, setWinPlayer] = useState(null)
 
   const handleBoxClick = (boxIndex) =>{                      //This gets the index of clicked box from Board.jsx
     const updatedBox = boxes.map((value, index)=>{     //Iterating through each box to check the value and index
@@ -28,10 +29,12 @@ const Game = () => {
         let {scoreO} = scores;
         scoreO += 1;                          //updates score if O won
         setScores({...scores,scoreO});
+        setWinPlayer("O")
       }else{
         let {scoreX} = scores;
         scoreX += 1;                         //updates score if X won
         setScores({...scores,scoreX});
+        setWinPlayer("X")
       }
     }
     setBoxes(updatedBox);        //updating box value on each click
@@ -52,14 +55,15 @@ const Game = () => {
     setGameOver(false)
     setBoxes(Array(9).fill(null))
     setPlayerX(true)
+    setWinPlayer(null)
   }
 
   return (
     <div className='game'>
         <h2>TIC TAC TOE</h2>
         <ScoreBoard scores={scores} playerX={playerX} />
-        <Board boxes={boxes} onClick={gameOver ? resetBoard : handleBoxClick} />   {/* Passing the data to Board.jsx */}
-        <ResetBtn setBoxes={setBoxes} setPlayerX={setPlayerX}/>
+        <Board boxes={boxes} onClick={gameOver ? resetBoard : handleBoxClick} winPlayer={winPlayer} setWinPlayer={setWinPlayer} resetBoard={resetBoard} />   {/* Passing the data to Board.jsx */}
+        <ResetBtn resetBoard={resetBoard} />
     </div>
   )
 }
