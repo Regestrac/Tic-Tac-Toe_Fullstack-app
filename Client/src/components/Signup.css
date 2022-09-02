@@ -1,11 +1,11 @@
 body {
-    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .signup-form {
+    margin-top: 8rem;
     width: 20rem;
     background-color: white;
     padding: 2rem;
@@ -61,4 +61,14 @@ input[type="submit"]:hover {
     flex-direction: column;
     gap: .5rem;
     margin: 1rem;
+}
+.link-box{
+    margin-top: 1rem;
+    text-align: center;
+}
+.Link{
+    text-decoration: none;
+    text-decoration-style: none;
+    padding: .1rem .5rem;
+    color: #000;
 }

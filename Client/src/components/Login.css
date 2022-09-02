@@ -1,5 +1,5 @@
 body {
-    height: 80vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,4 +60,15 @@ input[type="submit"]:hover {
     flex-direction: column;
     gap: .5rem;
     margin: 1rem;
+}
+
+.link-box{
+    margin-top: 1rem;
+    text-align: center;
+}
+.Link{
+    text-decoration: none;
+    text-decoration-style: none;
+    padding: .1rem .5rem;
+    color: #000;
 }

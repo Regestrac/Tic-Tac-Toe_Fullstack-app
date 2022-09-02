@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Login.css';
 import Axios from "axios";
 import Cookies from "universal-cookie";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const cookies = new Cookies();
@@ -35,6 +36,10 @@ const Login = () => {
          <input type="submit" onClick={login} />
        </div>
      </form>
+     <div className='link-box'>
+        <Link to='/signup' className='Link'>Looking for Signup?</Link>
+      </div>
+      
    </div>
   )
 }
