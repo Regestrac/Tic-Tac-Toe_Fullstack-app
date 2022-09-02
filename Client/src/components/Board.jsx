@@ -1,9 +1,7 @@
 import React from 'react'
-// import { useState } from 'react'
 import './Board.css'
 
-const Board = ({ boxes, onClick, winPlayer, setWinPlayer, setGameOver, resetBoard }) => {  //props coming from Game.jsx
-  // const [newClass, setNewClass] = useState('win-alert');
+const Board = ({ boxes, onClick, winPlayer, setWinPlayer, resetBoard }) => {  //props coming from Game.jsx
   const handleOk = () => {
     resetBoard()
     setWinPlayer(null)

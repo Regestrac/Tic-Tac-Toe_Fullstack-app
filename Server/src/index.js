@@ -28,13 +28,13 @@ app.post('/signup', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     try {
-
         const { username, password } = req.body
         const { users } = await serverClient.queryUsers({ name: username });
-        if (users.length === 0) return res.json({ message: "User not found" })
-        const passwordMatch = await bcrypt.compare(password, users[0].hashedPassword)
+        if (users.length === 0) return res.json({ message: "User not found" });
+        const token = serverClient.createToken(users[0].id)
+        const passwordMatch = await bcrypt.compare(password, users[0].hashedPassword);
         if (passwordMatch) {
-            res.json({ token, fullName: users[0].fullName, username, user_id: users[0].id })
+            res.json({ token, fullName: users[0].fullName, username, user_id: users[0].id });
         }
     } catch (error) {
         res.json(error);
