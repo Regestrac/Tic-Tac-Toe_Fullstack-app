@@ -2,24 +2,25 @@ import React, { useState } from 'react'
 import './Signup.css'
 import Axios from "axios"
 import Cookies from "universal-cookie"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = ({setIsAuth}) => {
+  const navigate = useNavigate()
   const cookies = new Cookies();
   const [user, setUser] = useState(null)
 
   const signup = (e) => {
     e.preventDefault()
     Axios.post("http://localhost:3001/signup", user).then(res => {
-      const { token, user_id, fullName, username, email, hashedPassword } = res.data;
+      const { token, user_id, fullName, username, hashedPassword } = res.data;
       cookies.set("token", token);
       cookies.set("user_id", user_id);
       cookies.set("fullName", fullName);
       cookies.set("username", username);
-      cookies.set("email", email);
       cookies.set("hashedPassword", hashedPassword);
       setIsAuth(true);
     })
+    navigate('/login')
   }
   return (
     <div className="signup-form">
@@ -35,11 +36,6 @@ const Signup = ({setIsAuth}) => {
           <label>Username </label>
           <input type="text" name="userName" required
             onChange={(e) => setUser({ ...user, username: e.target.value })} />
-        </div>
-        <div className="input-container">
-          <label>Email </label>
-          <input type="email" name="email" required
-            onChange={(e) => setUser({ ...user, email: e.target.value })} />
         </div>
         <div className="input-container">
           <label>Password </label>

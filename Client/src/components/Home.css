@@ -35,6 +35,9 @@
 }
 .auth{
     margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .auth-btn{
     margin: 1rem;

@@ -3,7 +3,7 @@ import './Home.css'
 import Logo from '../assets/Logo.png'
 import { useNavigate} from 'react-router-dom'
 
-const Home = () => {
+const Home = ({logOut, isAuth}) => {
     const navigate = useNavigate()   //Helps to navigate to new route
   return (
     <div className='home'>
@@ -16,8 +16,9 @@ const Home = () => {
             <button className='btn' onClick={() => navigate('/online-match')}>Play Online</button>    {/* navigates to the online match page */}
         </div>
         <div className='auth'>
-            <button className='auth-btn' onClick={() => navigate('/login')}>Login</button>     {/* navigates to the Login page */}
-            <button className='auth-btn' onClick={() => navigate('/signup')}>Signup</button>    {/* navigates to the SignUp page */}
+            {!isAuth && <button className='auth-btn' onClick={() => navigate('/login')}>Login</button>}     {/* navigates to the Login page */}
+            {!isAuth && <button className='auth-btn' onClick={() => navigate('/signup')}>Signup</button>}    {/* navigates to the SignUp page */}
+            {isAuth && <button className='auth-btn' onClick={logOut}>Logout</button>}    {/* navigates to the SignUp page */}
         </div>
     </div>
   )

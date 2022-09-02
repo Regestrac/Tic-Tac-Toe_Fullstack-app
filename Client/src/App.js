@@ -14,13 +14,13 @@ function App() {
   const api_key = 'nj9tdu6hk867';
   const client = StreamChat.getInstance(api_key)
   const [isAuth, setIsAuth] = useState(false)
+  console.log(isAuth)
 
   if (token) {
     client.connectUser({
       id: cookies.get("user_id"),
       name: cookies.get("username"),
       fullName: cookies.get("fullName"),
-      email: cookies.get("email"),
       hashedPassword: cookies.get("hashedPassword")
     }, token).then((user) => {
       setIsAuth(true)
@@ -33,7 +33,6 @@ function App() {
     cookies.remove("fullName");
     cookies.remove("username");
     cookies.remove("user_id");
-    cookies.remove("email");
     cookies.remove("hashedPassword");
     client.disconnectUser();
     setIsAuth(false)
@@ -43,11 +42,11 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes >
-          <Route exact path='/' element={<Home />} />             {/* Route for the Home page */}
+          <Route exact path='/' element={<Home logOut={logOut} isAuth={isAuth} />} />             {/* Route for the Home page */}
           <Route path='/offline-game' element={<Game />} />       {/* Route for the game page */}
           <Route path='/online-match' element={<OnlineMatch isAuth={isAuth} />} />    {/* Route for the online match page */}
           <Route path='/signup' element={<Signup setIsAuth={setIsAuth} />} />    {/* Route for the Signup page */}
-          <Route path='/login' element={<Login setIsAuth={setIsAuth} isAuth={isAuth} logOut={logOut} />} />    {/* Route for the Login page */}
+          <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />    {/* Route for the Login page */}
         </Routes>
       </BrowserRouter>
     </div>
