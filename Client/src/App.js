@@ -14,7 +14,11 @@ function App() {
   const api_key = 'nj9tdu6hk867';
   const client = StreamChat.getInstance(api_key)
   const [isAuth, setIsAuth] = useState(false)
+  console.log('isAuth***')
   console.log(isAuth)
+  console.log('client***')
+  console.log(client)
+
 
   if (token) {
     client.connectUser({
@@ -44,7 +48,7 @@ function App() {
         <Routes >
           <Route exact path='/' element={<Home logOut={logOut} isAuth={isAuth} />} />             {/* Route for the Home page */}
           <Route path='/offline-game' element={<Game />} />       {/* Route for the game page */}
-          <Route path='/online-match' element={<OnlineMatch isAuth={isAuth} />} />    {/* Route for the online match page */}
+          <Route path='/online-match' element={<OnlineMatch isAuth={isAuth} client={client} />} />    {/* Route for the online match page */}
           <Route path='/signup' element={<Signup setIsAuth={setIsAuth} />} />    {/* Route for the Signup page */}
           <Route path='/login' element={<Login setIsAuth={setIsAuth} />} />    {/* Route for the Login page */}
         </Routes>
