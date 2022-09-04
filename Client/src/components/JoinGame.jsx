@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import Board from './Board'
-import ResetBtn from './ResetBtn'
-import ScoreBoard from './ScoreBoard'
+import Game from './Game'
+// import Board from './Board'
+// import ResetBtn from './ResetBtn'
+// import ScoreBoard from './ScoreBoard'
 
 const JoinGame = ({ channel }) => {
     const [playersJoined, setPlayersJoined] = useState(
@@ -12,15 +13,14 @@ const JoinGame = ({ channel }) => {
         setPlayersJoined(e.Watcher_count === 2)
     })
     if (!playersJoined) {
-        return (
-            <div>Waiting for Players to join</div>
-        )
+        return <div>Waiting for Players to join</div>
     }
     return (
         <div className='join-game'>
-            <ScoreBoard />
+            <Game />
+            {/* <ScoreBoard />
             <Board />
-            <ResetBtn />
+            <ResetBtn /> */}
         </div>
     )
 }

@@ -24,7 +24,7 @@ const Signup = ({setIsAuth}) => {
   }
   return (
     <div className="signup-form">
-      <Link to='/' ><button>Home</button></Link>
+      <Link to='/' ><button className='home-btn' >Home</button></Link>
       <h2>SIGNUP</h2>
       <form>
         <div className="input-container">

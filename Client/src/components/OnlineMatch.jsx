@@ -2,25 +2,19 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import JoinGame from './JoinGame'
-import {  Channel } from 'stream-chat-react' //useChatContext,
+// import { Channel } from 'stream-chat'
+import { Chat, Channel } from 'stream-chat-react'
 
 const OnlineMatch = ({ isAuth, client }) => {
+  console.log(Channel)
   const [joinNewGame, setJoinNewGame] = useState(false)
   const [roomId, setRoomId] = useState("")
   const [channel, setChannel] = useState(null)
-  console.log('client in online match:')
-  console.log(client)
-  console.log("roomId*****")
-  console.log(roomId)
-  console.log('channel*****')
-  console.log(channel)
   const joinGame = () => {
     setJoinNewGame(true)
   }
   const createGame = async () => {
     const response = await client.queryUsers({ name: { $eq: roomId } });
-    console.log('response:')
-    console.log(response)
     if (response.users.length === 0) {
       alert("Room ID do not exist")
     }
@@ -57,7 +51,9 @@ const OnlineMatch = ({ isAuth, client }) => {
               <>
                 <div>
                   <Channel channel={channel}>
+                    <Chat client={client} >
                     <JoinGame channel={channel} />
+                    </Chat>
                   </Channel>
                 </div>
               </>}

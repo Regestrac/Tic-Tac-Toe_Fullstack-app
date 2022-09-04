@@ -6,3 +6,16 @@
 h2{
     margin: 4rem auto 0;
 }
+.home-btn{
+    margin: 1rem;
+    height: 2rem;
+    width: 7rem;
+    color: #fff;
+    font-size: 1rem;
+    background-color: #0000dd;
+    border-radius: .5rem;
+    box-shadow: 1px 1px 10px #00000077;
+}
+.home-btn:hover{
+    background-color: #0000ffdc;
+}

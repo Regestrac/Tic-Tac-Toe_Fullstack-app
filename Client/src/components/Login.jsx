@@ -25,7 +25,7 @@ const Login = ({ setIsAuth }) => {
 
   return (
         <div className="login-form">
-          <Link to='/' ><button>Home</button></Link>
+          <Link to='/' ><button className='home-btn' >Home</button></Link>
           <h2>LOGIN</h2>
           <form>
             <div className="input-container">
