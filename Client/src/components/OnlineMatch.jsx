@@ -2,10 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import JoinGame from './JoinGame'
-import { Channel } from 'stream-chat'
 
 const OnlineMatch = ({ isAuth, client }) => {
-  console.log(Channel)
   const [joinNewGame, setJoinNewGame] = useState(false)
   const [roomId, setRoomId] = useState("")
   const [channel, setChannel] = useState(null)
@@ -44,9 +42,7 @@ const OnlineMatch = ({ isAuth, client }) => {
             {channel != null &&
               <>
                 <div>
-                  <Channel channel={channel}>
                     <JoinGame channel={channel} />
-                  </Channel>
                 </div>
               </>}
           </div>

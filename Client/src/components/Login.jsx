@@ -1,25 +1,17 @@
 import React, { useState } from 'react'
 import './Login.css';
-import Axios from "axios";
-import Cookies from "universal-cookie";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = ({ setIsAuth }) => {
   const navigate = useNavigate();
-  const cookies = new Cookies();
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
   const login = (e) => {
     e.preventDefault()
-    Axios.post("http://localhost:3001/login", { username, password }).then(res => {
-      const { token, fullName, username, user_id } = res.data;
-      cookies.set("token", token);
-      cookies.set("fullName", fullName);
-      cookies.set("username", username);
-      cookies.set("user_id", user_id);
-      setIsAuth(true)
-    })
+    e.username = username
+    e.password = password
+    setIsAuth(true)
     navigate('/')
   }
 
