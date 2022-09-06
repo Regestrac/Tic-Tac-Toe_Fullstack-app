@@ -15,11 +15,11 @@ const Home = ({logOut, isAuth}) => {
             <button className='btn' onClick={() => navigate('/offline-game')}>Play Offline</button>   {/* navigates to the game page */}
             <button className='btn' onClick={() => navigate('/online-match')}>Play Online</button>    {/* navigates to the online match page */}
         </div>
-        <div className='auth'>
+         <div className='auth'>
             {!isAuth && <button className='auth-btn' onClick={() => navigate('/login')}>Login</button>}     {/* navigates to the Login page */}
             {!isAuth && <button className='auth-btn' onClick={() => navigate('/signup')}>Signup</button>}    {/* navigates to the SignUp page */}
             {isAuth && <button className='auth-btn' onClick={logOut}>Logout</button>}    {/* navigates to the SignUp page */}
-        </div>
+        </div> 
     </div>
   )
 }

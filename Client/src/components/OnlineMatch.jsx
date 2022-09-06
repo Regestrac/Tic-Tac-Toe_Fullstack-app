@@ -2,8 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import JoinGame from './JoinGame'
-// import { Channel } from 'stream-chat'
-import { Chat, Channel } from 'stream-chat-react'
+import { Channel } from 'stream-chat'
 
 const OnlineMatch = ({ isAuth, client }) => {
   console.log(Channel)
@@ -42,18 +41,11 @@ const OnlineMatch = ({ isAuth, client }) => {
                 <button onClick={createGame} >Join Game</button>
               </>}
             <br />
-            {/* {channel == null &&
-              <>
-                <h1>OR</h1>
-                <button onClick={createGame}>Create Game</button>
-              </>} */}
             {channel != null &&
               <>
                 <div>
                   <Channel channel={channel}>
-                    <Chat client={client} >
                     <JoinGame channel={channel} />
-                    </Chat>
                   </Channel>
                 </div>
               </>}
