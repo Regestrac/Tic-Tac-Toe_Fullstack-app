@@ -14,7 +14,16 @@ const io = new Server(server, {
 })
 
 io.on("connection", (socket)=>{
-    console.log(socket.id);
+    console.log("user connected:",socket.id);
+
+    socket.on("join_game", (data)=>{
+        socket.join(data)
+        console.log(`user with ID: ${socket.id} joined with data: ${data}`)
+    })
+
+    socket.on("game_stats", (data)=>{
+        console.log(data)
+    })
 
     socket.on("disconnect", ()=>{
         console.log("user disconnected", socket.id);

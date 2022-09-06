@@ -3,26 +3,26 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import JoinGame from './JoinGame'
 
-const OnlineMatch = ({ isAuth, client }) => {
-  const [joinNewGame, setJoinNewGame] = useState(false)
-  const [roomId, setRoomId] = useState("")
-  const [channel, setChannel] = useState(null)
+const OnlineMatch = ({ isAuth, socket}) => {
+  isAuth = true;
+  const [joinInput, setJoinInput] = useState(false)
+  // const [joinNewGame, setJoinNewGame] = useState(false)
+  const [gameId, setGameId] = useState("");
+  const [startGame, setStartGame] = useState(false);
   const joinGame = () => {
-    setJoinNewGame(true)
-  }
-  const createGame = async () => {
-    const response = await client.queryUsers({ name: { $eq: roomId } });
-    if (response.users.length === 0) {
-      alert("Room ID do not exist")
+    if(joinInput && gameId !== ""){
+      socket.emit("join_game", gameId)
+      setStartGame(true)
     }
-    const newChannel = await client.channel("messaging", {
-      members: [client.userID, response.users[0].id]
-    })
-    await newChannel.watch()
-    setChannel(newChannel)
   }
+  // const createGame = () => {
+
+  // }
   return (
     <>
+      <div style={{ height: "50vh", display: "flex", alignItems: "center", flexDirection: "column" }}>
+        <h2>Tic Tac Toe</h2>
+      </div>
       {!isAuth ? (
         <div style={{ height: "100vh", display: "flex", alignItems: "center", flexDirection: "column" }}>
           <h2>Tic Tac Toe</h2>
@@ -30,19 +30,20 @@ const OnlineMatch = ({ isAuth, client }) => {
           <button><Link to='/login' >Login</Link></button>
         </div>
       ) : (
-        <div>
+        <div style={{ height: "50vh", display: "flex", alignItems: "center", flexDirection: "column" }}>
           <div>
-            {!joinNewGame && channel == null && <button onClick={joinGame}>Join Game</button>}<br />
-            {joinNewGame && channel == null &&
-              <>
-                <input placeholder='Enter Room Id...' onChange={(e) => { setRoomId(e.target.value) }} ></input>
-                <button onClick={createGame} >Join Game</button>
-              </>}
+                {/* <button onClick={createGame}>Create Game</button><br /> */}
+                <button onClick={()=>setJoinInput(true)}>Join Game</button><br />
+                {joinInput  &&
+                  <>
+                    <input placeholder='Enter Room Id...' onChange={(e) => { setGameId(e.target.value) }} ></input>
+                    <button onClick={joinGame} >Join Game</button>
+                  </>}
             <br />
-            {channel != null &&
+            {gameId !== "" && startGame &&
               <>
                 <div>
-                    <JoinGame channel={channel} />
+                  <JoinGame socket={socket} />
                 </div>
               </>}
           </div>

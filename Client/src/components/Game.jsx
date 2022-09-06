@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import './Game.css'
-import Board from './Board'
-import ScoreBoard from './ScoreBoard'
-import ResetBtn from './ResetBtn'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import './Game.css';
+import Board from './Board';
+import ScoreBoard from './ScoreBoard';
+import ResetBtn from './ResetBtn';
+import { Link } from 'react-router-dom';
+import OnlineMatch from './OnlineMatch';
 
-const Game = ({isAuth}) => {
+const Game = () => {
   const winConditions = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]        //These are the possible win conditions
   ]
@@ -72,6 +73,7 @@ const Game = ({isAuth}) => {
       <ScoreBoard scores={scores} playerX={playerX} />
       <Board boxes={boxes} onClick={gameOver ? resetBoard : handleBoxClick} winPlayer={winPlayer} setWinPlayer={setWinPlayer} resetBoard={resetBoard} />   {/* Passing the data to Board.jsx */}
       <ResetBtn resetBoard={resetBoard} />
+      <OnlineMatch scores={scores} />
     </div>
   )
 }
