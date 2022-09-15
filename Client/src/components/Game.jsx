@@ -73,7 +73,6 @@ const Game = () => {
       <ScoreBoard scores={scores} playerX={playerX} />
       <Board boxes={boxes} onClick={gameOver ? resetBoard : handleBoxClick} winPlayer={winPlayer} setWinPlayer={setWinPlayer} resetBoard={resetBoard} />   {/* Passing the data to Board.jsx */}
       <ResetBtn resetBoard={resetBoard} />
-      <OnlineMatch scores={scores} />
     </div>
   )
 }

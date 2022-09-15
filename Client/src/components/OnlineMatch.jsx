@@ -19,8 +19,8 @@ const OnlineMatch = ({ isAuth, socket}) => {
         <h2>Tic Tac Toe</h2>
         <div className='join-forms'>
           <h1>Please create a session to Continue !</h1>
-          <button><Link to='/create-room' >Create Game</Link></button>
-          <button><Link to='/join-game'>Join Game</Link></button>
+          <Link to='/create-room' ><button className='create-btns' >Create Game</button></Link>
+          <Link to='/join-game' ><button className='create-btns' >Join Game</button></Link>
         </div>
       </div>
   )
