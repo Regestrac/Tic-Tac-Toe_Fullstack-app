@@ -1,26 +1,30 @@
-.home{
+.home {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.head{
+
+.head {
     margin: 4rem 0 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.logo{
+
+.logo {
     margin-top: 3rem;
-    height:6rem;
+    height: 6rem;
     width: 6rem;
     border-radius: .5rem;
 }
-.btns{
+
+.btns {
     display: flex;
     flex-direction: column;
 }
-.btn{
+
+.btn {
     margin: 1rem;
     height: 3rem;
     width: 10rem;
@@ -30,25 +34,7 @@
     border-radius: 1rem;
     box-shadow: 1px 1px 10px #00000077;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: #00ee00dd;
-}
-.auth{
-    margin-top: 7rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.auth-btn{
-    margin: 1rem;
-    height: 2rem;
-    width: 7rem;
-    color: #fff;
-    font-size: 1rem;
-    background-color: #0000dd;
-    border-radius: .5rem;
-    box-shadow: 1px 1px 10px #00000077;
-}
-.auth-btn:hover{
-    background-color: #0000ffdc;
 }
