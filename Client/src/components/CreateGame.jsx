@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import './CreateRoom.css'
+import './CreateGame.css'
 
 const CreateRoom = ({setIsAuth}) => {
     const navigate = useNavigate();
@@ -10,7 +10,6 @@ const CreateRoom = ({setIsAuth}) => {
       e.preventDefault()
       e.username = username
       setIsAuth(true)
-      navigate('/')
     }
   
     return (

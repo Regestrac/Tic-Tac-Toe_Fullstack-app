@@ -3,7 +3,7 @@ import Game from "./components/Game";
 import Home from "./components/Home";
 import OnlineMatch from "./components/OnlineMatch";
 import io from 'socket.io-client'
-import CreateRoom from "./components/CreateRoom";
+import CreateRoom from "./components/CreateGame";
 import JoinGame from "./components/JoinGame";
 
 const socket = io.connect("http://localhost:3001")
