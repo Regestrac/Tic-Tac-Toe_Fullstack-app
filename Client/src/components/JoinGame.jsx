@@ -5,9 +5,10 @@ const JoinGame = ({socket}) => {
   const [username, setUsername] = useState("")
   const [gameId, setGameId] = useState("")
 
+  const data = {username:username, gameId:gameId}
   const joinGame =(e)=>{
     if(username !== "" && gameId !== ""){
-      socket.on("join_game", username,gameId)
+      socket.emit("join_game", data)
     }else{
       e.preventDefault();
       alert("Please Enter username & game ID to continue...");

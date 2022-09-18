@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './CreateGame.css'
 
-const CreateGame = ({setIsAuth,socket}) => {
+const CreateGame = ({socket}) => {
     const [username, setUsername] = useState("")
   
     const createRoomAndJoin = (e) => {
       if(username !== ""){
-        socket.on("create_game", username)
-        setIsAuth(true)
+        socket.emit("create_game", username)
       }else{
         e.preventDefault();
         alert("Plese enter a Username to continue...")

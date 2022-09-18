@@ -3,6 +3,8 @@ const http = require('http');
 const cors = require('cors');
 const {Server} = require('socket.io');
 
+const Session = require('./Sessions');
+
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
@@ -13,16 +15,23 @@ const io = new Server(server, {
     }
 })
 
+var allGamesCodes = {}
+
 io.on("connection", (socket)=>{
     console.log("user connected:",socket.id);
 
-    socket.on("join_game", (data)=>{
-        socket.join(data)
-        console.log(`user with ID: ${socket.id} joined with data: ${data}`)
+    socket.on("create_game", (username)=>{
+        var gameId = Math.floor(Math.random()*100000).toString();
+        console.log(gameId)
+        const session= new Session(username,gameId,socket);
+        console.log(session)
+        allGamesCodes = {...allGamesCodes, [gameId]:session}
+        console.log(allGamesCodes)
+        socket.emit("game_created", username,gameId )
     })
 
-    socket.on("game_stats", (data)=>{
-        console.log(data)
+    socket.on("join_game", (data)=>{
+        socket.join(data.gameId)
     })
 
     socket.on("disconnect", ()=>{
