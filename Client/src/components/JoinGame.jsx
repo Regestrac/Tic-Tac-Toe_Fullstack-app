@@ -4,6 +4,16 @@ import { Link } from 'react-router-dom'
 const JoinGame = ({socket}) => {
   const [username, setUsername] = useState("")
   const [gameId, setGameId] = useState("")
+
+  const joinGame =(e)=>{
+    if(username !== "" && gameId !== ""){
+      socket.on("join_game", username,gameId)
+    }else{
+      e.preventDefault();
+      alert("Please Enter username & game ID to continue...");
+    }
+  }
+
     return (
       <div className="login-form">
       <Link to='/' ><button className='home-btn' >Home</button></Link>
@@ -18,7 +28,7 @@ const JoinGame = ({socket}) => {
             onChange={(e) => setGameId(e.target.value)} />
         </div>
         <div className="button-container">
-          <button className='sub-btn' type="submit"  >Join</button>
+          <button className='sub-btn' type="submit" onClick={joinGame} >Join</button>
         </div>
       </form>
     </div>

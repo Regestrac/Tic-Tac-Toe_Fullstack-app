@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './CreateGame.css'
 
-const CreateRoom = ({setIsAuth}) => {
-    const navigate = useNavigate();
+const CreateGame = ({setIsAuth,socket}) => {
     const [username, setUsername] = useState("")
   
     const createRoomAndJoin = (e) => {
-      e.preventDefault()
-      e.username = username
-      setIsAuth(true)
+      if(username !== ""){
+        socket.on("create_game", username)
+        setIsAuth(true)
+      }else{
+        e.preventDefault();
+        alert("Plese enter a Username to continue...")
+      }
     }
   
     return (
@@ -30,4 +33,4 @@ const CreateRoom = ({setIsAuth}) => {
     )
 }
 
-export default CreateRoom
+export default CreateGame

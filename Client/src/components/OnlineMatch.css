@@ -26,7 +26,12 @@
     border-radius: 1rem;
     border: none;
     box-shadow: 1px 1px 1rem #000000bb;
+    position: relative;
 }
 .create-btns:hover{
     background-color: #1111ee;
+}
+.create-game, .join-game{
+    position: absolute;
+    z-index: 1;
 }

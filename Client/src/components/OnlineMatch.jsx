@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import CreateRoom from './CreateGame'
+import CreateGame from './CreateGame'
 import JoinGame from './JoinGame'
 import './OnlineMatch.css'
 
@@ -36,13 +36,13 @@ const OnlineMatch = ({ isAuth, socket}) => {
           <h1>Please create a session to Continue !</h1>
           <button className='create-btns' onClick={showCreateForm} >Create Game</button>
           {createGame && 
-          <div ref={formRef} className='crete-game'>
-          <CreateRoom />
+          <div ref={formRef} className='create-game'>
+          <CreateGame socket={socket}/>
           </div>}
           <button className='create-btns' onClick={showJoinForm} >Join Game</button>
          {joinGame &&
           <div ref={formRef} className='join-game'>
-            <JoinGame />
+            <JoinGame socket={socket} />
           </div>}
         </div>
       </div>
