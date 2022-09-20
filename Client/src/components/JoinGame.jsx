@@ -1,21 +1,27 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './joinGame.css'
 
 const JoinGame = ({socket}) => {
   const [username, setUsername] = useState("")
   const [gameId, setGameId] = useState("")
+  const [invalidCode, setInvalidCode] = useState(false)
 
-  const data = {username:username, gameId:gameId}
   const joinGame =(e)=>{
     if(username !== "" && gameId !== ""){
-      socket.emit("join_game", data)
+      socket.emit("join_game", gameId,username)
     }else{
       e.preventDefault();
       alert("Please Enter username & game ID to continue...");
     }
+
+    socket.on("invalid_code", ()=>{
+      setInvalidCode(true)
+    })
   }
 
     return (
+      <>
       <div className="login-form">
       <Link to='/' ><button className='home-btn' >Home</button></Link>
       <h2>JOIN GAME</h2>
@@ -33,6 +39,12 @@ const JoinGame = ({socket}) => {
         </div>
       </form>
     </div>
+      {invalidCode &&
+      <div className='invalid'>
+        <h1>The code you entered is Invalid, Please try again.!</h1>
+        <button className='retry-btn' onClick={()=>setInvalidCode(false)} >RETRY</button>
+      </div>}
+      </>
     )
 }
 

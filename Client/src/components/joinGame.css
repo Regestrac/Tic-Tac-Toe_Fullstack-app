@@ -76,3 +76,26 @@ input[type="submit"]:hover {
 .home-btn:hover{
     background-color: #0000ffdc;
 }
+
+.invalid{
+    width: 20rem;
+    background-color: #fff;
+    margin: 1rem auto;
+    padding: 3rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 10px #00000077;
+    position: absolute;
+    top: 6%;
+    right: 2%;
+}
+.retry-btn{
+    margin: 2rem 0 .1rem 0;
+    height: 2.5rem;
+    width: 7rem;
+    color: #fff;
+    font-size: 1rem;
+    background-color: #0000dd;
+    border-radius: .5rem;
+    border: none;
+    box-shadow: 1px 1px 15px #00000077;
+}

@@ -30,8 +30,13 @@ io.on("connection", (socket)=>{
         socket.emit("game_created", username,gameId )
     })
 
-    socket.on("join_game", (data)=>{
-        socket.join(data.gameId)
+    socket.on("join_game", (gameId,username)=>{
+        socket.join(gameId)
+        if(allGamesCodes[gameId] === undefined){
+            socket.emit("invalid_code")
+        }else{
+            socket.to(gameId).broadcast("valid_code", "Joined Game")
+        }
     })
 
     socket.on("disconnect", ()=>{
