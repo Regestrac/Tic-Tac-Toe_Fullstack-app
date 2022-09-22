@@ -18,7 +18,11 @@ const JoinGame = ({socket}) => {
     socket.on("invalid_code", ()=>{
       setInvalidCode(true)
     })
-  }
+
+    socket.on("valid_code",(data)=>{
+      console.log(data)
+    })
+  } 
 
     return (
       <>

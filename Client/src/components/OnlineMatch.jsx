@@ -5,8 +5,11 @@ import { useState } from 'react'
 import CreateGame from './CreateGame'
 import JoinGame from './JoinGame'
 import './OnlineMatch.css'
+import io from 'socket.io-client'
 
-const OnlineMatch = ({ isAuth, socket}) => {
+const socket = io.connect("http://localhost:3001")
+
+const OnlineMatch = ({ isAuth}) => {
   isAuth = false;
   const [createGame, setCreateGame] = useState(false);
   const [joinGame, setJoinGame] = useState(false);
