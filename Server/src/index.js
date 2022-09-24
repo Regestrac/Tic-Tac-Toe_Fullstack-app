@@ -24,9 +24,7 @@ io.on("connection", (socket)=>{
         var gameId = Math.floor(Math.random()*100000).toString();
         console.log(gameId)
         const session= new Session(username,gameId,socket);
-        console.log(session)
         allGamesCodes = {...allGamesCodes, [gameId]:session}
-        console.log(allGamesCodes)
         socket.emit("game_created", username,gameId )
     })
 

@@ -3,7 +3,7 @@ import './Home.css'
 import Logo from '../assets/Logo.png'
 import { useNavigate} from 'react-router-dom'
 
-const Home = ({logOut, isAuth}) => {
+const Home = () => {
     const navigate = useNavigate()   //Helps to navigate to new route
   return (
     <div className='home'>

@@ -9,8 +9,7 @@ import io from 'socket.io-client'
 
 const socket = io.connect("http://localhost:3001")
 
-const OnlineMatch = ({ isAuth}) => {
-  isAuth = false;
+const OnlineMatch = () => {
   const [createGame, setCreateGame] = useState(false);
   const [joinGame, setJoinGame] = useState(false);
   const showCreateForm =(e)=>{
