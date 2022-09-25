@@ -15,26 +15,29 @@ const io = new Server(server, {
     }
 })
 
-var allGamesCodes = {}
+var allGamesCodes = {}     //The code & session created for all games will be stored here for joining game parallel for different players
 
 io.on("connection", (socket)=>{
     console.log("user connected:",socket.id);
 
+    //Creating a session for player 1 to create a new game
     socket.on("create_game", (username)=>{
-        var gameId = Math.floor(Math.random()*100000).toString();
+        var gameId = Math.floor(Math.random()*100000).toString();  //creating a random code for the game to create room
         console.log(gameId)
-        const session= new Session(username,gameId,socket);
-        allGamesCodes = {...allGamesCodes, [gameId]:session}
+        const session= new Session(username,gameId,socket);        // creating a new session for the created game
+        allGamesCodes = {...allGamesCodes, [gameId]:session}       // updating & storing the code and session as object when a game is created
         socket.emit("game_created", username,gameId )
     })
 
+    //creating session for player 2 to join the game
     socket.on("join_game", (gameId,username)=>{
         socket.join(gameId)
         console.log(gameId)
-        if(allGamesCodes[gameId] === undefined){
-            socket.emit("invalid_code")
+        if(allGamesCodes[gameId] === undefined){    //Check for the code entered by 2nd player
+            socket.emit("invalid_code")             
         }else{
-            socket.to(gameId.toString()).emit("valid_code", "Joined Game")
+            allGamesCodes[gameId].joinGame(username,socket);
+            socket.to(gameId.toString()).emit("valid_code", allGamesCodes[gameId].gameStats)
         }
     })
 
@@ -43,6 +46,6 @@ io.on("connection", (socket)=>{
     })
 })
 
-server.listen(3001, ()=>{
-    console.log("server at 3001...");
+server.listen(process.env.PORT || 7000, ()=>{
+    console.log("server started at 7000...");
 })

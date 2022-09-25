@@ -16,5 +16,10 @@
         this.gameId = gameId;
         this.player1_socket  = socket;
     }
+
+    joinGame(username,socket){
+        this.gameStats.player2_name = username;
+        this.player2_socket  = socket;
+    }
  }
  module.exports = Session
