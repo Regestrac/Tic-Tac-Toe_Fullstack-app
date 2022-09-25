@@ -4,7 +4,6 @@ import Board from './Board';
 import ScoreBoard from './ScoreBoard';
 import ResetBtn from './ResetBtn';
 import { Link } from 'react-router-dom';
-import OnlineMatch from './OnlineMatch';
 
 const Game = () => {
   const winConditions = [

@@ -37,7 +37,7 @@ io.on("connection", (socket)=>{
             socket.emit("invalid_code")             
         }else{
             allGamesCodes[gameId].joinGame(username,socket);
-            socket.to(gameId.toString()).emit("valid_code", allGamesCodes[gameId].gameStats)
+            socket.to(gameId.toString()).SendToBoth("valid_code", allGamesCodes[gameId].gameStats);
         }
     })
 
