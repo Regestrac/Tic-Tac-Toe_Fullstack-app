@@ -7,7 +7,7 @@ import JoinGame from './JoinGame'
 import './OnlineMatch.css'
 import io from 'socket.io-client'
 
-const socket = io.connect("http://localhost:3001")
+const socket = io.connect("http://localhost:7000")
 
 const OnlineMatch = () => {
   const [createGame, setCreateGame] = useState(false);
@@ -25,7 +25,7 @@ const OnlineMatch = () => {
   let formRef = useRef();
   useEffect(() =>{
     document.addEventListener("mousedown", (event)=>{
-      if(!formRef.current.contains(event.target)){
+      if(!formRef?.current?.contains?.(event.target)){
         setCreateGame(false);
         setJoinGame(false);
       }

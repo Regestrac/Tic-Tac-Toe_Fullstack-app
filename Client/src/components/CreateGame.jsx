@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './CreateGame.css'
 
 const CreateGame = ({socket}) => {
     const [username, setUsername] = useState("")
+    const navigate = useNavigate();
   
     const createRoomAndJoin = (e) => {
       if(username !== ""){
         socket.emit("create_game", username)
+        navigate('/match')
       }else{
         e.preventDefault();
         alert("Plese enter a Username to continue...")

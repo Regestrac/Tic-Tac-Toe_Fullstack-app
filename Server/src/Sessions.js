@@ -1,5 +1,6 @@
  class Session{
-
+    player1_socket;
+    player2_socket;
     gameStats = {
         player1_name : "",
         player2_name : "",
@@ -17,12 +18,12 @@
         this.player1_socket  = socket;
     }
 
-    joinGame(username,socket){
+    JoinGame(username,socket){
         this.gameStats.player2_name = username;
         this.player2_socket  = socket;
     }
 
-    SendToBoth(event,data){
+    sendToBoth(event,data){
         this.player1_socket.emit(event,data)
         this.player2_socket.emit(event,data)
     }
@@ -35,7 +36,7 @@
         for (let i = 0; i < winConditions.length; i++) {    //loops through the winconditions
             const [x, y, z] = winConditions[i];
             if (boxes[x] && boxes[x] === boxes[y] && boxes[y] === boxes[z]) {     //checks if the condition satisfies with same value
-              return boxes[x];
+              return ((boxes[x] === "X") ? player1_name : player2_name);
             }
           }
     }

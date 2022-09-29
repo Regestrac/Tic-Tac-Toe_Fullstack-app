@@ -11,7 +11,8 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "*"
+        origin: "*",
+        methods : ["GET","POST"],
     }
 })
 
@@ -23,21 +24,22 @@ io.on("connection", (socket)=>{
     //Creating a session for player 1 to create a new game
     socket.on("create_game", (username)=>{
         var gameId = Math.floor(Math.random()*100000).toString();  //creating a random code for the game to create room
-        console.log(gameId)
+        console.log("player1:"+gameId)
         const session= new Session(username,gameId,socket);        // creating a new session for the created game
         allGamesCodes = {...allGamesCodes, [gameId]:session}       // updating & storing the code and session as object when a game is created
+        socket.join(gameId)
         socket.emit("game_created", username,gameId )
     })
 
     //creating session for player 2 to join the game
     socket.on("join_game", (gameId,username)=>{
         socket.join(gameId)
-        console.log(gameId)
+        console.log("player2:"+gameId)
         if(allGamesCodes[gameId] === undefined){    //Check for the code entered by 2nd player
             socket.emit("invalid_code")             
         }else{
-            allGamesCodes[gameId].joinGame(username,socket);
-            socket.to(gameId.toString()).SendToBoth("valid_code", allGamesCodes[gameId].gameStats);
+            allGamesCodes[gameId].JoinGame(username,socket);
+            allGamesCodes[gameId].sendToBoth("valid_code", allGamesCodes[gameId].gameStats);
         }
     })
 
